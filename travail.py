@@ -15,7 +15,7 @@ class Arbre() :
     def binaire(self) :
         pass
     
-    def parcours_largeur (self) :
+    def parcours_largeur(self) :
         pass
 
     def parcours_profondeur_prefixe(self) :
@@ -26,4 +26,3 @@ class Arbre() :
 
     def affiche(self) :
         pass
-    
