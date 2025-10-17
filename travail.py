@@ -9,7 +9,11 @@ class Arbre() :
         self.liste_fils.append(fils)
     
     def hauteur(self) :
-        pass
+        h_max = 0
+        for fils in self.liste_fils :
+            h_fils = fils.hauteur()
+            h_max += 1
+
 
     def taille(self) :
         if self.vide() :
