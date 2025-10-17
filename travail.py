@@ -10,7 +10,9 @@ class Arbre() :
         pass
 
     def taille(self) :
-        pass
+        if self.vide() :
+            return None
+        
 
     def binaire(self) :
         pass
