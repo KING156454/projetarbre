@@ -1,3 +1,5 @@
+from Pile_File import *
+
 class Arbre() :
     def __init__(self, nom_racine) :
         self.nom_racine = nom_racine
@@ -12,7 +14,7 @@ class Arbre() :
     def taille(self) :
         if self.vide() :
             return None
-        
+        return len(liste_fils)
 
     def binaire(self) :
         pass
