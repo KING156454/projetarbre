@@ -1,4 +1,4 @@
-from Pile_File import *
+from pile import *
 
 class Arbre() :
     def __init__(self, nom_racine) :
@@ -12,19 +12,33 @@ class Arbre() :
         h_max = 0
         for fils in self.liste_fils :
             h_fils = fils.hauteur()
-            h_max += 1
+            if h_fils > h_max :
+                h_max = h_fils
 
 
     def taille(self) :
-        if self.vide() :
-            return None
-        return len(liste_fils)
+        taille_totale = 1
+        for fils in self.liste_fils :
+            taille_totale += fils.taille()
+        return taille_totale 
 
     def binaire(self) :
-        pass
+        if len(self.liste_fils) > 2 :
+            return False
+        for fils in self.liste_fils :
+            if not fils.binaire() :
+                return False
+        return True
     
-    def parcours_largeur(self) :
-        pass
+    def parcours_largeur(self):
+        resultat = ""
+        file = [self]
+        while file:
+            noeud = file.pop(0)
+            resultat += noeud.nom_racine + " "
+            for fils in noeud.liste_fils:
+                file.append(fils)
+        return resultat
 
     def parcours_profondeur_prefixe(self) :
         pass
@@ -34,3 +48,26 @@ class Arbre() :
 
     def affiche(self) :
         pass
+
+    
+
+arbre = Arbre("projetArbre")
+rapport_pdf = Arbre("rapport.pdf")
+source = Arbre("source")
+code = Arbre("code")
+arbre.ajoute_fils(rapport_pdf)
+arbre.ajoute_fils(source)
+arbre.ajoute_fils(code)
+fichier1 = Arbre("fichier1")
+fichier2 = Arbre("fichier2")
+fichier3 = Arbre("fichier3")
+source.ajoute_fils(fichier1)
+source.ajoute_fils(fichier2)
+source.ajoute_fils(fichier3)
+test_py = Arbre("test.py")
+arbre_py = Arbre("Arbre.py")
+code.ajoute_fils(test_py)
+code.ajoute_fils(arbre_py)
+
+
+print(arbre.parcours_largeur())
