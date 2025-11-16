@@ -1,4 +1,6 @@
 from pile import *
+from graphviz import *
+
 
 class Arbre() :
     def __init__(self, nom_racine) :
@@ -41,14 +43,23 @@ class Arbre() :
         return resultat
 
     def parcours_profondeur_prefixe(self) :
-        pass
+        resultat = self.nom_racine + " "
+        for fils in self.liste_fils :
+            resultat += fils.parcours_profondeur_prefixe()
+        return resultat
+        
 
     def liste_aretes(self) :
-        pass
+        aretes = []
+        for fils in self.liste_fils :
+            aretes.append((self.nom_racine, fils.nom_racine))
+            aretes.extend(fils.liste_aretes())
+        return aretes  
 
     def affiche(self) :
-        pass
-
+        dot = Digraph()
+        self._ajoute_noeuds(dot)
+        dot.render('arbre', format='png', cleanup=True)
     
 
 arbre = Arbre("projetArbre")
@@ -70,4 +81,5 @@ code.ajoute_fils(test_py)
 code.ajoute_fils(arbre_py)
 
 
-print(arbre.parcours_largeur())
+print(arbre.liste_aretes())
+arbre.affiche()
