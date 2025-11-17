@@ -83,3 +83,14 @@ code.ajoute_fils(arbre_py)
 
 print(arbre.liste_aretes())
 arbre.affiche()
+
+
+def explore(chemin):
+    arbre = Arbre(os.path.basename(chemin))
+    for entry in os.scandir(chemin):
+        if entry.is_dir():
+            sous_arbre = explore(entry.path)
+            arbre.ajoute_fils(sous_arbre)
+        else:
+            arbre.ajoute_fils(Arbre(entry.name))
+    return Arbre
