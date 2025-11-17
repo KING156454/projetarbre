@@ -57,9 +57,10 @@ class Arbre() :
         return aretes  
 
     def affiche(self) :
-        dot = Digraph()
-        self._ajoute_noeuds(dot)
-        dot.render('arbre', format='png', cleanup=True)
+        graph = Graph()
+        liste = self.liste_aretes()
+        graph.edges(liste)
+        graph.render(view=True format='png')
     
 
 arbre = Arbre("projetArbre")
@@ -93,4 +94,5 @@ def explore(chemin):
             arbre.ajoute_fils(sous_arbre)
         else:
             arbre.ajoute_fils(Arbre(entry.name))
-    return arbre
+    return Arbre
+explore(".").affiche()
