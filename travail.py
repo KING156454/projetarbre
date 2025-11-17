@@ -1,6 +1,6 @@
 from pile import *
-from graphviz import *
-
+from graphviz import Graph
+import os
 
 class Arbre() :
     def __init__(self, nom_racine) :
@@ -60,7 +60,7 @@ class Arbre() :
         graph = Graph()
         liste = self.liste_aretes()
         graph.edges(liste)
-        graph.render(view=True format='png')
+        graph.render(view=True, format='png')
     
 
 arbre = Arbre("projetArbre")
@@ -94,5 +94,5 @@ def explore(chemin):
             arbre.ajoute_fils(sous_arbre)
         else:
             arbre.ajoute_fils(Arbre(entry.name))
-    return Arbre
+    return arbre
 explore(".").affiche()
