@@ -95,4 +95,3 @@ def explore(chemin):
         else:
             arbre.ajoute_fils(Arbre(entry.name))
     return arbre
-explore(".").affiche()
