@@ -93,4 +93,4 @@ def explore(chemin):
             arbre.ajoute_fils(sous_arbre)
         else:
             arbre.ajoute_fils(Arbre(entry.name))
-    return Arbre
+    return arbre
